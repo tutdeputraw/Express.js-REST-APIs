@@ -7,7 +7,15 @@ exports.getPosts = (req, res, next) => {
 };
 
 exports.createPost = (req, res, next) => {
-  Post.bulkCreate(req.body).then(result => {
+  const create = () => {
+    if (req.body instanceof Array) {
+      return Post.bulkCreate(req.body);
+    } else {
+      return Post.create(req.body);
+    }
+  };
+
+  create().then(result => {
     console.log(result);
     res.status(201).json({
       message: 'post created successfully!',
