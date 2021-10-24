@@ -9,15 +9,11 @@ const Post = sequelize.define('post', {
     primaryKey: true
   },
   title: Sequelize.STRING,
-  price: {
-    type: Sequelize.DOUBLE,
-    allowNull: false
-  },
   imageUrl: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  description: {
+  content: {
     type: Sequelize.STRING,
     allowNull: false
   }
