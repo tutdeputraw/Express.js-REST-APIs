@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+require('dotenv').config();
 
 const sequelize = require('./utils/database');
 const errorController = require('./controllers/errorController');
@@ -26,8 +27,7 @@ app.use(errorController.get404);
 sequelize
   .sync()
   .then(result => {
-    // console.log(result);
-    app.listen(3000);
+    app.listen(process.env.SERVER_PORT);
   })
   .catch(err => {
     console.log(err);
