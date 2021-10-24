@@ -1,6 +1,6 @@
 const express = require('express');
 
-const feedController = require('../controllers/postController');
+const feedController = require('../controllers/post.controller');
 
 const router = express.Router();
 

@@ -1,14 +1,13 @@
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-require('dotenv').config();
 
-const sequelize = require('./utils/database');
-const errorController = require('./controllers/errorController');
+const database = require('./utils/database');
+const errorController = require('./controllers/error.controller');
 
-const post = require('./models/post');
-
-const feedRoutes = require('./routes/postRoutes');
+const feedRoutes = require('./routes/post.routes');
 
 const app = express();
 
@@ -24,7 +23,7 @@ app.use(morgan('dev'));
 app.use('/post', feedRoutes);
 app.use(errorController.get404);
 
-sequelize
+database.sequelize
   .sync()
   .then(result => {
     app.listen(process.env.SERVER_PORT);

@@ -1,22 +1,21 @@
-const Sequelize = require('sequelize');
-const sequelize = require('../utils/database');
+module.exports = (sequelize, Sequelize) => {
+  const Post = sequelize.define('post', {
+    id: {
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
+    },
+    title: Sequelize.STRING,
+    imageUrl: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    content: {
+      type: Sequelize.STRING,
+      allowNull: false
+    }
+  });
 
-const Post = sequelize.define('post', {
-  id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    allowNull: false,
-    primaryKey: true
-  },
-  title: Sequelize.STRING,
-  imageUrl: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  content: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
-});
-
-module.exports = Post;
+  return Post;
+};
