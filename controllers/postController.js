@@ -7,7 +7,7 @@ exports.getPosts = (req, res, next) => {
 };
 
 exports.createPost = (req, res, next) => {
-  Post.create(req.body).then(result => {
+  Post.bulkCreate(req.body).then(result => {
     console.log(result);
     res.status(201).json({
       message: 'post created successfully!',
