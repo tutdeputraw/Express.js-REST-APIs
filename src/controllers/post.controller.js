@@ -1,4 +1,4 @@
-const Post = require('../models/post');
+const Post = require('../utils/database').post;
 
 exports.getPosts = (req, res, next) => {
   Post.findAll()
